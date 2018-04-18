@@ -25,9 +25,10 @@ clone_project()
         git checkout $3
         cd -
     else
-        echo -en "You can update "$green"$2"$rst" manualy$rst\n"
+        echo -en "You can update "$green"$2"$rst" manually$rst\n"
     fi
 }
+
 
 stage "Clone projects"
 
@@ -37,12 +38,16 @@ clone_project https://github.com/ostis-books/kb.git kb master
 clone_project https://github.com/Ivan-Zhukau/sc-web.git sc-web master
 clone_project https://github.com/ShunkevichDV/ims.ostis.kb.git ims.ostis.kb master
 
+clone_project https://github.com/ostis-books/ostis-components.git components master
+
+
 stage "Prepare projects"
 
 prepare()
 {
     echo -en $green$1$rst"\n"
 }
+
 
 prepare "sc-machine"
 cd ../sc-machine/scripts
@@ -53,6 +58,7 @@ sudo apt-get install redis-server
 ./clean_all.sh
 ./make_all.sh
 cd -
+
 
 prepare "sc-web"
 sudo apt-get install python-dev # required for numpy module
@@ -66,6 +72,25 @@ grunt build
 cd -
 echo -en $green"Copy server.conf"$rst"\n"
 cp -f ../config/server.conf ../sc-web/server/
+
+
+kb_components_path=../../kb/books_ui/components
+
+prepare "bookmark-component"
+
+cd ../components/bookmark-component
+
+if [ ! -d "$kb_components_path/bookmark_component" ]; then
+    mkdir "$kb_components_path"
+    mkdir "$kb_components_path/bookmark_component"
+fi
+
+mv *.scs* $kb_components_path/bookmark_component/
+mv update_component.sh ../../scripts/update_bookmark_component.sh
+cd -
+chmod +x update_bookmark_component.sh
+./update_bookmark_component.sh
+
 
 stage "Build knowledge base"
 
