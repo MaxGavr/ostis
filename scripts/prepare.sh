@@ -40,7 +40,6 @@ clone_project https://github.com/ShunkevichDV/ims.ostis.kb.git ims.ostis.kb mast
 
 clone_project https://github.com/ostis-books/ostis-components.git components master
 
-
 stage "Prepare projects"
 
 prepare()
@@ -80,16 +79,25 @@ prepare "bookmark-component"
 
 cd ../components/bookmark-component
 
-if [ ! -d "$kb_components_path/bookmark_component" ]; then
-    mkdir "$kb_components_path"
-    mkdir "$kb_components_path/bookmark_component"
-fi
+mkdir -p "$kb_components_path/bookmark_component"
 
 mv *.scs* $kb_components_path/bookmark_component/
 mv update_component.sh ../../scripts/update_bookmark_component.sh
 cd -
 chmod +x update_bookmark_component.sh
 ./update_bookmark_component.sh
+
+prepare "book-search-component"
+
+cd ../components/booksearch-component
+
+mkdir -p "$kb_components_path/book_search_component"
+
+mv *.scs* $kb_components_path/book_search_component/
+mv update_component.sh ../../scripts/update_book_search_component.sh
+cd -
+chmod +x update_book_search_component.sh
+./update_book_search_component.sh
 
 
 stage "Build knowledge base"
