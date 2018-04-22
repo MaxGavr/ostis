@@ -75,17 +75,17 @@ cp -f ../config/server.conf ../sc-web/server/
 
 kb_components_path=../../kb/books_ui/components
 
-prepare "bookmark-component"
+prepare "note-component"
 
-cd ../components/bookmark-component
+cd ../components/note-component
 
-mkdir -p "$kb_components_path/bookmark_component"
+mkdir -p "$kb_components_path/note_component"
 
-mv *.scs* $kb_components_path/bookmark_component/
-mv update_component.sh ../../scripts/update_bookmark_component.sh
+mv *.scs* $kb_components_path/note_component/
+mv update_component.sh ../../scripts/update_note_component.sh
 cd -
-chmod +x update_bookmark_component.sh
-./update_bookmark_component.sh
+chmod +x update_note_component.sh
+./update_note_component.sh
 
 prepare "book-search-component"
 
