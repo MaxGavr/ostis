@@ -99,6 +99,17 @@ cd -
 chmod +x update_book_search_component.sh
 ./update_book_search_component.sh
 
+prepare "tag-cloud-component"
+
+cd ../components/tagCloud-component
+
+mkdir -p "$kb_components_path/tag_cloud_component"
+
+mv *.scs* $kb_components_path/tag_cloud_component/
+mv update_component.sh ../../scripts/update_tag_cloud_component.sh
+cd -
+chmod +x update_tag_cloud_component.sh
+./update_tag_cloud_component.sh
 
 stage "Build knowledge base"
 
