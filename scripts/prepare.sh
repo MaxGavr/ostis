@@ -38,7 +38,7 @@ clone_project https://github.com/ostis-books/kb.git kb master
 clone_project https://github.com/Ivan-Zhukau/sc-web.git sc-web master
 clone_project https://github.com/ShunkevichDV/ims.ostis.kb.git ims.ostis.kb master
 
-clone_project https://github.com/NikaKovalchuk/ostis-components.git components master
+clone_project https://github.com/ostis-books/ostis-components.git components master
 
 stage "Prepare projects"
 
