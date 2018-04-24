@@ -38,7 +38,7 @@ clone_project https://github.com/ostis-books/kb.git kb master
 clone_project https://github.com/Ivan-Zhukau/sc-web.git sc-web master
 clone_project https://github.com/ShunkevichDV/ims.ostis.kb.git ims.ostis.kb master
 
-clone_project https://github.com/ostis-books/ostis-components.git components master
+clone_project https://github.com/NikaKovalchuk/ostis-components.git components master
 
 stage "Prepare projects"
 
@@ -77,11 +77,12 @@ kb_components_path=../../kb/books_ui/components
 
 prepare "note-component"
 
-cd ../components/note-component
+cd ../components/note_component
 
 mkdir -p "$kb_components_path/note_component"
 
 mv *.scs* $kb_components_path/note_component/
+mv htmls $kb_components_path/note_component/
 mv update_component.sh ../../scripts/update_note_component.sh
 cd -
 chmod +x update_note_component.sh
@@ -89,7 +90,7 @@ chmod +x update_note_component.sh
 
 prepare "book-search-component"
 
-cd ../components/booksearch-component
+cd ../components/book_search_component
 
 mkdir -p "$kb_components_path/book_search_component"
 
@@ -101,7 +102,7 @@ chmod +x update_book_search_component.sh
 
 prepare "tag-cloud-component"
 
-cd ../components/tagCloud-component
+cd ../components/tag_cloud_component
 
 mkdir -p "$kb_components_path/tag_cloud_component"
 
