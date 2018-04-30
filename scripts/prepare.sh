@@ -112,6 +112,18 @@ cd -
 chmod +x update_tag_cloud_component.sh
 ./update_tag_cloud_component.sh
 
+prepare "book-search-info-component"
+
+cd ../components/book_search_info_component
+
+mkdir -p "$kb_components_path/book_search_info_component"
+
+mv *.scs* $kb_components_path/book_search_info_component/
+mv update_component.sh ../../scripts/update_book_search_info_component.sh
+cd -
+chmod +x update_book_search_info_component.sh
+./update_book_search_info_component.sh
+
 stage "Build knowledge base"
 
 ./build_kb.sh
