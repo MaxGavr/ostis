@@ -75,54 +75,26 @@ cp -f ../config/server.conf ../sc-web/server/
 
 kb_components_path=../../kb/books_ui/components
 
-prepare "note-component"
+prepare_component()
+{
+    prepare "$1"
 
-cd ../components/note_component
+    cd "../components/$1"
 
-mkdir -p "$kb_components_path/note_component"
+    mkdir -p "$kb_components_path/$1"
 
-mv *.scs* $kb_components_path/note_component/
-mv htmls $kb_components_path/note_component/
-mv update_component.sh ../../scripts/update_note_component.sh
-cd -
-chmod +x update_note_component.sh
-./update_note_component.sh
+    mv -f *.scs* "$kb_components_path/$1/"
+    mv -f htmls "$kb_components_path/$1/"
+    mv -f update_component.sh "../../scripts/update_$1.sh"
+    cd -
+    chmod +x "update_$1.sh"
+    "./update_$1.sh"
+}
 
-prepare "book-search-component"
-
-cd ../components/book_search_component
-
-mkdir -p "$kb_components_path/book_search_component"
-
-mv *.scs* $kb_components_path/book_search_component/
-mv update_component.sh ../../scripts/update_book_search_component.sh
-cd -
-chmod +x update_book_search_component.sh
-./update_book_search_component.sh
-
-prepare "tag-cloud-component"
-
-cd ../components/tag_cloud_component
-
-mkdir -p "$kb_components_path/tag_cloud_component"
-
-mv *.scs* $kb_components_path/tag_cloud_component/
-mv update_component.sh ../../scripts/update_tag_cloud_component.sh
-cd -
-chmod +x update_tag_cloud_component.sh
-./update_tag_cloud_component.sh
-
-prepare "book-search-info-component"
-
-cd ../components/book_search_info_component
-
-mkdir -p "$kb_components_path/book_search_info_component"
-
-mv *.scs* $kb_components_path/book_search_info_component/
-mv update_component.sh ../../scripts/update_book_search_info_component.sh
-cd -
-chmod +x update_book_search_info_component.sh
-./update_book_search_info_component.sh
+prepare_component note_component
+prepare_component book_search_component
+prepare_component tag_cloud_component
+prepare_component book_search_info_component
 
 stage "Build knowledge base"
 
