@@ -95,6 +95,7 @@ prepare_component note_component
 prepare_component book_search_component
 prepare_component tag_cloud_component
 prepare_component book_search_unified_component
+prepare_component similar_books_component
 
 stage "Build knowledge base"
 
